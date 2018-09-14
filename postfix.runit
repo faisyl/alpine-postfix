@@ -1,0 +1,19 @@
+#! /bin/sh
+
+. /etc/envvars
+
+exec 2>&1 
+set -e
+
+umask 022
+
+chown root:root /var/spool/postfix/pid
+
+PROGARGS="start-fg"
+PROGHOME="/"
+PROGNAME="/usr/sbin/postfix"
+
+
+export HOME=/root
+
+cd  "${PROGHOME}" &&  exec $PROGNAME $PROGARGS
